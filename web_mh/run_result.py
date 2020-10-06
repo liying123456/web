@@ -579,7 +579,7 @@ def get_scan_data():
         dic = {}
         dic['name'] = str(all_ip[i])
         if str(all_ip[i]) == '10.12.1.230':
-            dic['category'] = '10.12.1.230(可疑IP)'
+            dic['category'] = '10.12.1.230(可疑主机)'
             dic['symbolSize'] = '30'
         elif str(all_ip[i]) in count_data:
             dic['category'] = str(all_ip[i])
@@ -602,7 +602,7 @@ def get_scan_data():
     for i in count_data:
         dic = {}
         if str(i) == '10.12.1.230':
-            dic['name'] = str(i) + '(可疑IP)'
+            dic['name'] = str(i) + '(可疑主机)'
         else:
             dic['name'] = str(i)
         lsc.append(dic)
@@ -644,7 +644,7 @@ def get_scan_data_37():
         dic = {}
         dic['name'] = str(all_ip[i])
         if str(all_ip[i]) == '10.12.1.37':
-            dic['category'] = '10.12.1.37(可疑IP)'
+            dic['category'] = '10.12.1.37(可疑主机)'
             dic['symbolSize'] = '30'
         elif str(all_ip[i]) in count_data:
             dic['category'] = str(all_ip[i])
@@ -667,7 +667,7 @@ def get_scan_data_37():
     for i in count_data:
         dic = {}
         if str(i) == '10.12.1.37':
-            dic['name'] = str(i) + '(可疑IP)'
+            dic['name'] = str(i) + '(可疑主机)'
         else:
             dic['name'] = str(i)
         lsc.append(dic)

@@ -49,18 +49,40 @@ def get_result():
     :return:
     """
     url = request.form.get("input_val")
-    l_lstm, p_lstm = LSTM_clf.predict_singleDN(url)
-    l_lstm = str(l_lstm)
-    p_lstm = str(format(p_lstm, '.4f'))
-    l_xgb, p_xgb = XGBoost_clf.predict_singleDN(url)
-    l_xgb = str(l_xgb)
-    p_xgb = str(format(p_xgb, '.4f'))
-    l_brf, p_brf = RF_clf.predict_singleDN(url)
-    l_brf = str(l_brf)
-    p_brf = str(format(p_brf, '.4f'))
-    l_svm, p_svm = SVM_clf.predict_singleDN(url)
-    l_svm = str(l_svm)
-    p_svm = str(format(p_svm, '.4f'))
+    try:
+        l_lstm, p_lstm = LSTM_clf.predict_singleDN(url)
+        l_lstm = str(l_lstm)
+        p_lstm = str(format(p_lstm, '.4f'))
+    except Exception as e:
+        print("lstm error:{}".format(str(e)))
+        
+	
+    try:
+        l_xgb, p_xgb = XGBoost_clf.predict_singleDN(url)
+        l_xgb = str(l_xgb)
+        p_xgb = str(format(p_xgb, '.4f'))
+    except Exception as e:
+        print("xgb error:{}".format(str(e)))
+        l_xgb = '???'
+        p_xgb = '???'
+
+    try:
+        l_brf, p_brf = RF_clf.predict_singleDN(url)
+        l_brf = str(l_brf)
+        p_brf = str(format(p_brf, '.4f'))
+    except Exception as e:
+        print("brf error:{}".format(str(e)))
+        l_brf = '???'
+        p_brf = '???'
+
+    try:
+        l_svm, p_svm = SVM_clf.predict_singleDN(url)
+        l_svm = str(l_svm)
+        p_svm = str(format(p_svm, '.4f'))
+    except Exception as e:
+        print("svm error:{}".format(str(e)))
+        l_svm = '???'
+        p_svm = '???'
 
     return jsonify({"lstm": [l_lstm, p_lstm], "xgboost": [l_xgb, p_xgb], "brf": [l_brf, p_brf], "svm":[l_svm, p_svm]})
 

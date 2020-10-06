@@ -250,30 +250,28 @@ if __name__ == "__main__":
     LSTM_model_add = r"./model/LSTM_model.json"
     LSTM_model_weight = r"./model/LSTM_model.h5"
 
-
     LSTM_clf = LSTM_classifier()
     LSTM_clf.load(LSTM_model_add, LSTM_model_weight)
+
+    RF_clf = RF_classifier()
+    RF_clf.load(RF_model_add, RF_standard_scaler_add)
+
+    SVM_clf = SVM_classifier()
+    SVM_clf.load(SVM_model_add, SVM_standard_scaler_add)
+
+    XGBoost_clf = XGBoost_classifier()
+    XGBoost_clf.load(XGBoost_model_add, XGBoost_standard_scaler_add)
     while True:
         a = input("请输入。。")
         re = LSTM_clf.predict_singleDN(a)
+        print("lstm")
         print(re)
-    # RF_clf.predict(test_add)
-    # RF_clf.predict_singleDN("baijiahao.dsalkswjgoijdslk.com")
-    # RF_clf.predict_singleDN("baijiahao.cnblog.org")
 
-    # SVM_clf = SVM_classifier()
-    # SVM_clf.load(SVM_model_add, SVM_standard_scaler_add)
-    # SVM_clf.predict(test_add)
-    # SVM_clf.predict_singleDN("baijiahao.dsalkswjgoijdslk.com")
+        print('rf')
+        print(RF_clf.predict_singleDN(a))
 
-    # XGBoost_clf = XGBoost_classifier()
-    # XGBoost_clf.load(XGBoost_model_add, XGBoost_standard_scaler_add)
-    # XGBoost_clf.predict(test_add)
-    # XGBoost_clf.predict_singleDN("baijiahao.dsalkswjgoijdslk.com")
-    # XGBoost_clf.predict_singleDN("baijiahao.cinblog.org")
+        print('svm')
+        print(SVM_clf.predict_singleDN(a))
 
-    # LSTM_clf = LSTM_classifier()
-    # LSTM_clf.load(LSTM_model_add, LSTM_model_weight)
-    # LSTM_clf.predict_singleDN("baijiahao.dsalkswjgoijdslk.com")
-    # LSTM_clf.predict_singleDN("baijiahao.cnblog.org")
-
+        print('xgb')
+        print(XGBoost_clf.predict_singleDN(a))
